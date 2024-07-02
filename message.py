@@ -191,6 +191,7 @@ class ColorPixel(MessageBase):
 
 
 class ColorMessage(MessageBase):
+
     def __init__(self, header: Header, coordinates: Coordinates, size: Size, command: Command, data: ColorPixel, blit: Blit, end: End):
         # def __init__(self, header, coordinates, size, command, data, blit, end):
         super().__init__()
@@ -236,6 +237,7 @@ class ColorMessage(MessageBase):
 
 
 class ImageMessage(MessageBase):
+
     def __init__(self, header: Header, coordinates: Coordinates, size: Size, command: Command, data: bytes, blit: Blit, end: End):
         self._header = header
         self._coordinates = coordinates

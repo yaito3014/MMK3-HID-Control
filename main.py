@@ -22,7 +22,7 @@ def do_screen_color_test():
     header = Header(screen_index=0)
     coordinates = Coordinates(x_pos=0, y_pos=0)
     size = Size(width=480, height=272)
-    command = Repeat(int(480*272/2))
+    command = Repeat(int(480 * 272 / 2))
     data = ColorPixel(value=43594)
     blit = Blit()
     end = End(screen_index=0)

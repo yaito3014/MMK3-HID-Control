@@ -9,7 +9,6 @@
 #
 # *****************************************************************************
 
-
 # from PyQt5.QtGui import QImage
 # from PyQt5.QtCore import QByteArray
 from rgb_pixel import RGBPixel
