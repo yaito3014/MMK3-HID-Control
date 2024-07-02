@@ -13,17 +13,14 @@
 # from PyQt5.QtCore import QByteArray
 from rgb_pixel import RGBPixel
 from PIL import Image
-from functools import reduce
-from operator import add
 
 
 class MaschineImage(object):
-
     def __init__(self, image_name):
-        self._image_name = image_name
-        super().__init__()
         image = Image.open(image_name)
         image = image.resize((480, 272))
+
+        self._image_name = image_name
         self._image = image
 
     @property
@@ -38,19 +35,12 @@ class MaschineImage(object):
     def rgb565_bytes(self):
         return self._pixels_to_bytes()
 
-    def _converted(self, pixel):
+    @staticmethod
+    def _converted(pixel):
         return RGBPixel(pixel_value=pixel).byte_value
 
-    def _get_image_pixels(self):
-        return self._image.getdata()
-
     def _pixels_to_bytes(self):
-        data = []
-        for pixel in list(self._get_image_pixels()):
-            converted = self._converted(pixel)
-            data.append(converted)
-        data = reduce(add, data)
-        return data
+        return bytes.join(self._converted(pixel) for pixel in self.rgb888_pixels)
 
 
 # image = MaschineImage('Live.jpg')
